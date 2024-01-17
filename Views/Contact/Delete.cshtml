@@ -1,11 +1,11 @@
-@page
-@model contacts_app.Views.Contact.Delete
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Excluir Contato";
 }
 
-<h1>@ViewData["Title"]</h1>
-
-<div>
-    
+<div class="text-center d-flex flex-column gap-4">
+    <h3>Deseja excluir (Mark) de seus contatos?</h3>
+    <form>
+        <button type="submit" class="btn btn-danger">Sim</button>
+        <button class="btn btn-cancel" role="button" asp-controller="Contact" asp-action="Index">Não</button>
+    </form>
 </div>
