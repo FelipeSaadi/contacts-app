@@ -5,7 +5,7 @@
 <div class="text-center d-flex flex-column gap-4">
     <h3>Deseja excluir (Mark) de seus contatos?</h3>
     <form>
-        <button type="submit" class="btn btn-danger">Sim</button>
-        <button class="btn btn-cancel" role="button" asp-controller="Contact" asp-action="Index">Não</button>
+        <button type="submit" class="btn btn-danger" asp-controller="Contact" asp-action="Delete">Confirmar</button>
+        <button class="btn btn-cancel" role="button" asp-controller="Contact" asp-action="Index">Cancelar</button>
     </form>
 </div>
