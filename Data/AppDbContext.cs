@@ -13,6 +13,6 @@ namespace contacts_app.Data
         {
         }
 
-        public DbSet<ContactModel> Contact {get; set;}
+        public DbSet<ContactModel> Contacts {get; set;}
     }
 }
