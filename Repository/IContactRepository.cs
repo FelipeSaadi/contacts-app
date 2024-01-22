@@ -9,5 +9,7 @@ namespace contacts_app.Repository
     public interface IContactRepository
     {
         ContactModel Add(ContactModel contact);
+        List<ContactModel> FindAll();
+        ContactModel FindById(ContactModel id);
     }
 }

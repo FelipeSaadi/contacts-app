@@ -20,5 +20,15 @@ namespace contacts_app.Repository
             _appDbContext.SaveChanges();
             return contact;
         }
+
+        public List<ContactModel> FindAll()
+        {
+            return _appDbContext.Contacts.ToList();
+        }
+
+        public ContactModel FindById(ContactModel id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -21,7 +21,8 @@ namespace contacts_app.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            List<ContactModel> contacts = _contactRepository.FindAll();
+            return View(contacts);
         }
 
         public IActionResult Create()
@@ -29,7 +30,7 @@ namespace contacts_app.Controllers
             return View();
         }
 
-        public IActionResult Update()
+        public IActionResult Update(int id)
         {
             return View();
         }
