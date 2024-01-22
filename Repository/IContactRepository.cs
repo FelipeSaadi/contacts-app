@@ -9,7 +9,9 @@ namespace contacts_app.Repository
     public interface IContactRepository
     {
         ContactModel Add(ContactModel contact);
+        ContactModel Update(ContactModel contact);
+        ContactModel Delete(ContactModel contact);
         List<ContactModel> FindAll();
-        ContactModel FindById(ContactModel id);
+        ContactModel FindById(int id);
     }
 }

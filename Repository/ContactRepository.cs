@@ -26,9 +26,40 @@ namespace contacts_app.Repository
             return _appDbContext.Contacts.ToList();
         }
 
-        public ContactModel FindById(ContactModel id)
+        public ContactModel FindById(int id)
         {
-            throw new NotImplementedException();
+            return _appDbContext.Contacts.FirstOrDefault(contact => contact.Id == id);
+        }
+
+        public ContactModel Update(ContactModel contact)
+        {
+            ContactModel contactDb = FindById(contact.Id);
+
+            if(contactDb == null) {
+                throw new Exception("Houve um erro na atualização do contato");
+            }
+            
+            contactDb.Name = contact.Name;
+            contactDb.Email = contact.Email;
+            contactDb.Phone = contact.Phone;
+
+            _appDbContext.Contacts.Update(contactDb);
+            _appDbContext.SaveChanges();
+
+            return contactDb;
+        }
+
+        public ContactModel Delete(ContactModel contact) {
+            ContactModel contactDb = FindById(contact.Id);
+
+            if(contactDb == null) {
+                throw new Exception("Erro ao deletar o contato");
+            } 
+
+            _appDbContext.Contacts.Remove(contactDb);
+            _appDbContext.SaveChanges();
+
+            return contactDb;
         }
     }
 }

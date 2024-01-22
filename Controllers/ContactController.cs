@@ -32,12 +32,14 @@ namespace contacts_app.Controllers
 
         public IActionResult Update(int id)
         {
-            return View();
+            ContactModel contact = _contactRepository.FindById(id);
+            return View(contact);
         }
 
-        public IActionResult Delete()
+        public IActionResult Delete(int id)
         {
-            return View();
+            ContactModel contact = _contactRepository.FindById(id);
+            return View(contact);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
@@ -50,6 +52,20 @@ namespace contacts_app.Controllers
         public IActionResult Create(ContactModel contact)
         {
             _contactRepository.Add(contact);
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public IActionResult Update(ContactModel contact)
+        {
+            _contactRepository.Update(contact);
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public IActionResult Delete(ContactModel contact)
+        {
+            _contactRepository.Delete(contact);
             return RedirectToAction("Index");
         }
     }
