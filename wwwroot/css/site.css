@@ -20,3 +20,19 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.field-validation-error {
+  color: red;
+}
+
+.close-alert {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: -4px;
+  top: -4px;
+  border-radius: 12px;
+  width: 24px;
+  height: 24px;
+}

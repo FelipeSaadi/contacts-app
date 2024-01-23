@@ -7,6 +7,7 @@ using contacts_app.Data;
 using contacts_app.Models;
 using contacts_app.Repository;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.Extensions.Logging;
 
 namespace contacts_app.Controllers
@@ -51,22 +52,61 @@ namespace contacts_app.Controllers
         [HttpPost]
         public IActionResult Create(ContactModel contact)
         {
-            _contactRepository.Add(contact);
-            return RedirectToAction("Index");
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    _contactRepository.Add(contact);
+                    TempData["SuccessMessage"] = "Contato cadastrado com sucesso";
+                    return RedirectToAction("Index");
+                }
+                return View(contact);
+            }
+            catch (Exception error)
+            {
+                TempData["ErrorMessage"] = $"Erro ao cadastrar contato. {error.Message}";
+                return RedirectToAction("Index");
+            }
         }
 
         [HttpPost]
         public IActionResult Update(ContactModel contact)
         {
-            _contactRepository.Update(contact);
-            return RedirectToAction("Index");
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    _contactRepository.Update(contact);
+                    TempData["SuccessMessage"] = "Contato atualizado com sucesso";
+                    return RedirectToAction("Index");
+                }
+                return View(contact);
+            }
+            catch (Exception error)
+            {
+                TempData["ErrorMessage"] = $"Erro ao atualizar contato. {error.Message}";
+                return RedirectToAction("Index");
+            }
+
         }
 
         [HttpPost]
         public IActionResult Delete(ContactModel contact)
         {
-            _contactRepository.Delete(contact);
-            return RedirectToAction("Index");
+            try
+            {
+
+                _contactRepository.Delete(contact);
+                TempData["SuccessMessage"] = "Contato deletado com sucesso";
+                return RedirectToAction("Index");
+            }
+            catch (Exception error)
+            {
+                TempData["ErrorMessage"] = $"Erro ao deletar contato. {error.Message}";
+                return RedirectToAction("Index");
+            }
+
+
         }
     }
 }

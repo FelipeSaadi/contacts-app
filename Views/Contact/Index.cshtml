@@ -4,6 +4,22 @@
 }
 
 <div class="text-center">
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            @TempData["SuccessMessage"]
+            <button type="button" class="btn btn-danger btn0-sm close-alert" aria-label="Close">X</button>
+        </div>
+    }
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            @TempData["ErrorMessage"]
+            <button type="button" class="btn btn-danger btn0-sm close-alert" aria-label="Close">X</button>
+        </div>
+    }
+
     <div class="d-flex justify-content-start">
         <a class="btn btn-primary" role="button" asp-controller="Contact" asp-action="Create">Adicionar</a>
     </div>
@@ -31,8 +47,10 @@
                         <td>@contact.Phone</td>
                         <td>
                             <div class="btn-group" role="group" aria-label="Basic example">
-                                <a type="button" class="btn btn-primary" asp-route-id="@contact.Id" asp-controller="Contact" asp-action="Update">Editar</a>
-                                <a type="button" class="btn btn-danger" asp-route-id="@contact.Id" asp-controller="Contact" asp-action="Delete">Apagar</a>
+                                <a type="button" class="btn btn-primary" asp-route-id="@contact.Id" asp-controller="Contact"
+                                    asp-action="Update">Editar</a>
+                                <a type="button" class="btn btn-danger" asp-route-id="@contact.Id" asp-controller="Contact"
+                                    asp-action="Delete">Apagar</a>
                             </div>
                         </td>
                     </tr>
