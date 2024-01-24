@@ -1,2 +1,2 @@
-# contacts-app
-A contact application with MVC and database 
+# Sistema de cadastro de contatos
+Foi desenvolvido utilizando MVC ASP.Net, SQLite e Bootstrap
